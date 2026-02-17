@@ -1,5 +1,5 @@
 # Sentinel: Privacy-Preserving Credential Analyzer
-**Developer:** Abdelrahman Saad  
+**Developer:** Abdelrahman Mohamed Saad  
 **Technical Focus:** NIST SP 800-63B Compliance & Client-Side Cryptography
 
 ##  Project Overview
