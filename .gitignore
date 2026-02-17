@@ -1,0 +1,12 @@
+# Firebase files
+.firebase/
+firebase-debug.log
+.firebaserc
+
+# Node/Dependency files
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Any local environment files
+.env
