@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel | Privacy-First Password Analysis</title>
+    <meta name="description" content="Client-side, privacy-preserving password strength analyzer complying with NIST SP 800-63B.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <h1>Sentinel <span class="badge">SECURE</span></h1>
+            <p>Local-Only NIST SP 800-63B Analyzer</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="security-notice">
+            <p><strong>🔒 Zero-Knowledge Guarantee:</strong> Your password is processed 100% within your browser. It is never sent to any server. Breach checks use <a href="https://haveibeenpwned.com/API/v3#PwnedPasswords" target="_blank">k-anonymity</a> (hashing prefix).</p>
+        </section>
+
+        <section class="analyzer-input">
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="Enter a password to analyze..." autocomplete="off">
+                <button id="toggleVisibility" aria-label="Toggle Password Visibility">👁️</button>
+            </div>
+            <div id="typingFeedback" class="typing-indicator"></div>
+        </section>
+
+        <section id="resultsDashboard" class="hidden">
+            <div class="grid-2">
+                <div class="card score-card">
+                    <h3>Strength Score</h3>
+                    <div id="scoreDisplay" class="score-0">0/4</div>
+                    <p id="crackTimeDisplay">Time to crack: --</p>
+                </div>
+                <div class="card entropy-card">
+                    <h3>Shannon Entropy</h3>
+                    <div id="entropyDisplay">0 bits</div>
+                    <p class="subtext">Information Density</p>
+                </div>
+            </div>
+
+            <div class="card breach-card">
+                <h3>Breach Status (k-Anonymity)</h3>
+                <div id="breachResult" class="status-neutral">Waiting for input...</div>
+            </div>
+
+            <div class="card compliance-card">
+                <h3>NIST SP 800-63B Compliance</h3>
+                <ul id="nistChecklist">
+                    <li id="rule-length" class="fail">Min 8 characters</li>
+                    <li id="rule-breach" class="neutral">Not found in breach database</li>
+                    <li id="rule-dict" class="neutral">Not a common dictionary word</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built By | <a href="https://github.com/abdulrhmansaad456eg/sentinel-analyzer" target="_blank">View Source Code & Threat Model</a></p>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
